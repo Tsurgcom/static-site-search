@@ -1,0 +1,56 @@
+{
+	"name": "@tsurgcom/static-site-search",
+	"version": "0.1.0",
+	"description": "Feature-hash static site search with keyboard-aware ranking and a WASM cosine kernel.",
+	"license": "MIT",
+	"type": "module",
+	"engines": {
+		"bun": ">=1.1.0"
+	},
+	"bin": {
+		"static-site-search": "./dist/cli.js"
+	},
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./client": {
+			"types": "./dist/client.d.ts",
+			"import": "./dist/client.js",
+			"default": "./dist/client.js"
+		},
+		"./vite": {
+			"types": "./dist/vite-plugin.d.ts",
+			"import": "./dist/vite-plugin.js",
+			"default": "./dist/vite-plugin.js"
+		},
+		"./engine.wasm": "./wasm/engine.wasm"
+	},
+	"files": [
+		"dist",
+		"src",
+		"wasm",
+		"scripts",
+		"README.md",
+		"LICENSE"
+	],
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"prepare": "tsc -p tsconfig.json",
+		"test": "bun test",
+		"wasm": "bun scripts/build-search-wasm.ts"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.2.21",
+		"typescript": "^5.9.2"
+	},
+	"sideEffects": false,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Tsurgcom/static-site-search.git"
+	}
+}
